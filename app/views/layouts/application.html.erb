@@ -9,7 +9,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <%= stylesheet_link_tag    "application", :media => "all" %>
-    <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
 
   </head>
@@ -81,19 +80,13 @@
       
       <%= yield %>
 
-      <hr>
-      <% if false %>
-      <%= image_tag('Corner.png', class: 'image-left-top') %>
-      <% end %>
+      <hr />
       <footer>
         <p>&copy; <strong>u</strong>bjective 2013</p>
       </footer>
 
     </div> <!-- /container -->
-
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
+    <%= javascript_include_tag "application" %>
     <script>
       $('.dropdown-toggle').dropdown()
     </script>
