@@ -1,0 +1,22 @@
+<% @task.objectives.each do |objective| %>
+	
+	<%= content_tag_for :li, objective do %>
+		<% if objective.completed %>
+		<blockquote class="completed">
+		  <p class="lead"><%= objective.objective %> <span class="inactive">(completed)</span></p>
+		  <small>Last update: <%= time_ago_in_words(objective.updated_at) + " ago" %></small>
+		  <%= link_to "Uncomplete", uncomplete_objective_path(@task.id, objective.id), class: 'btn btn-small' %>
+		  <%= link_to 'Update', edit_task_objective_path(@task, objective), class: 'btn btn-small' %> | 
+		  <%= link_to 'Remove', task_objective_path(@task, objective), class: 'btn btn-small', method: :delete, data: { confirm: 'Are you sure you want to remove this objective?' } %>
+		</blockquote>
+		<% else %>
+		<blockquote class="incompleted">
+		  <p class="lead"><%= objective.objective %></p>
+		  <small>Created: <%= time_ago_in_words(objective.created_at) + " ago" %></small>
+		  <%= link_to "Complete", complete_objective_path(@task.id, objective.id), class: 'btn btn-small btn-success' %>
+		  <%= link_to 'Update', edit_task_objective_path(@task, objective), class: 'btn btn-small' %> | 
+		  <%= link_to 'Remove', task_objective_path(@task, objective), class: 'btn btn-small', method: :delete, data: { confirm: 'Are you sure you want to remove this objective?' } %>
+		</blockquote>
+		<% end %>
+	<% end %>
+<% end %>

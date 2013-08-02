@@ -1,0 +1,90 @@
+<h1>My tasks and objectives</h1><%= link_to 'New Task', new_task_path, class: 'btn btn-primary' %>
+<hr />
+
+<div class="accordion" id="accordion2">
+  <% @tasks.each do |task| %>
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= task.id %>">
+        <blockquote>
+          <h3><%= task.title %></h3><small><%= task.objectives.completed.count %> / <%= task.objectives.count %> tasks completed.</small>
+          <p><%= task.description %></p>
+          <div class="progress progress-striped active">
+            <div class="bar" style="width: <%= progress_objectives(task) %>;"></div> | <%= progress_objectives(task) %>
+          </div>
+          <small>Last update: <%= time_ago_in_words(task.updated_at) + " ago" %></small>
+          <%= link_to "Update", edit_task_path(task) %> |
+          <% if task.public %>
+            <%= link_to "Make Private", private_task_path(task.id) %> |
+          <% else %>
+            <%= link_to "Make Public", public_task_path(task.id) %> |
+          <% end %>
+          <%= link_to "Remove Task", task_path(task), method: :delete, data: { confirm: "Are you sure?" } %>
+          <% if task.author != current_user.profile_name %>
+            <span class="pull-right padding-right">Original author: <em><%= task.author %> &copy;</em></span>
+          <% end %>
+          <hr />
+        </blockquote>
+      </a>
+    </div>
+    <% if task == @tasks[0] %>
+    <div id="collapse<%= task.id %>" class="accordion-body collapse in">
+    <% else %>
+    <div id="collapse<%= task.id %>" class="accordion-body collapse">
+    <% end %>
+      <div class="accordion-inner">
+        <ol id="objectives" data-update-url="<%= sort_task_objectives_path(@user, task) %>">
+          <%= link_to 'Add new objective', new_task_objective_path(current_user, task), class: 'btn btn-small btn-primary' %><hr />
+          <% if task.objectives %>
+            <% task.objectives.order("position").each do |objective| %>
+              <%= content_tag_for :li, objective do %>
+                <% if objective.completed %>
+                <blockquote class="completed">
+                  <p class="lead"><%= objective.objective %> <span class="inactive">(completed)</span></p>
+                  <small>Last update: <%= time_ago_in_words(objective.updated_at) + " ago" %></small>
+                  <%= link_to "Uncomplete", uncomplete_objective_path(task.id, objective.id), class: 'btn btn-small' %>
+                  <%= link_to 'Update', edit_task_objective_path(task, objective), class: 'btn btn-small' %> | 
+                  <%= link_to 'Remove', task_objective_path(task, objective), class: 'btn btn-small', method: :delete, data: { confirm: 'Are you sure you want to remove this objective?' } %>
+                </blockquote>
+                <% else %>
+                <blockquote class="incompleted">
+                  <p class="lead"><%= objective.objective %></p>
+                  <small>Created: <%= time_ago_in_words(objective.created_at) + " ago" %></small>
+                  <%= link_to "Complete", complete_objective_path(task.id, objective.id), class: 'btn btn-small btn-success' %>
+                  <%= link_to 'Update', edit_task_objective_path(task, objective), class: 'btn btn-small' %> | 
+                  <%= link_to 'Remove', task_objective_path(task, objective), class: 'btn btn-small', method: :delete, data: { confirm: 'Are you sure you want to remove this objective?' } %>
+                </blockquote>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+
+<!-- MODALS -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Objective:</b>
+  <%= @objective.objective %>
+</p>
+
+
+<%= link_to 'Edit', edit_task_objective_path(@task, @objective) %> |
+<%= link_to 'Back', tasks_path(current_user) %>

@@ -1,0 +1,11 @@
+<%= simple_form_for([@task, @objective], html: { class: 'form-horizontal' }) do |f| %>
+  <%= f.error_notification %>
+
+
+  <div class="field">
+    <%= f.input :objective, placeholder: '(my objective is...)', input_html: {rows: 4, class: 'input-xxlarge' } %>
+  </div>
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

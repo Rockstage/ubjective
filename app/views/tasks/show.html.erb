@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @task.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @task.description %>
+</p>
+
+<p>
+	<%= @task.id %>
+</p>
+
+<p>
+	<%= @task.user_id %>
+</p>
+
+<p>
+	<%= current_user.id %>
+</p>
+
+
+<%= link_to 'Edit', tasks_path(current_user) %> |
+<%= link_to 'Do it!', clone_task_path(@task) %> |
+<%= link_to 'Back', browse_path %>
