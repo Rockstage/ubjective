@@ -5,13 +5,20 @@ gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
 gem 'twitter-bootstrap-rails'
 gem 'simple_form'
 gem 'devise'
 gem 'acts_as_list'
 gem 'deep_cloneable', '~> 1.5.2'
 gem 'rename'
+
+group :development, :test do
+	gem 'sqlite3'
+end
+
+group :production do
+	gem "pg"
+end
 
 
 # Gems used only for assets and not required
