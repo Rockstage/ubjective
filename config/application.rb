@@ -58,5 +58,8 @@ module Ubjective
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    #Gives an error when false, app error - something went wrong
+    config.assets.initialize_on_precompile = true
   end
 end

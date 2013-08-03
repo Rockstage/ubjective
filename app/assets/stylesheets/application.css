@@ -11,6 +11,7 @@
  *= require first
  *= require bootstrap
  *= require_self
+ *= require mobile
  *= require_tree .
  */
 
@@ -105,11 +106,18 @@ li.dropdown {
 }
 
 .hero-unit {
-	background-image: url("tree.jpg");
+	background-image: url("tree.png");
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 50% 60%;
 }
+
+*:hover,
+*:focus {
+	-webkit-transition: 0.5s;
+	transition: 0.5s;
+}
+
 
 
 

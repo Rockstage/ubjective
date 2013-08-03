@@ -54,7 +54,7 @@ class ObjectivesController < ApplicationController
 
     respond_to do |format|
       if @objective.save
-        format.html { redirect_to tasks_path(current_user), notice: 'Objective was successfully created.' }
+        format.html { redirect_to tasks_path(current_user), notice: 'ubjective was successfully created.' }
         format.json { render json: @objective, status: :created, location: @objective }
       else
         format.html { render action: "new" }
@@ -70,7 +70,7 @@ class ObjectivesController < ApplicationController
 
     respond_to do |format|
       if @objective.update_attributes(params[:objective])
-        format.html { redirect_to tasks_path(current_user), notice: 'Objective was successfully updated.' }
+        format.html { redirect_to tasks_path(current_user), notice: 'ubjective was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
