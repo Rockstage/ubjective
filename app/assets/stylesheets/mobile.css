@@ -22,7 +22,7 @@ blockquote > p {
 }
 
 .navbar-fixed-top {
-	margin-bottom: 0;
+	margin-bottom: 10px;
 }
 
 }
@@ -101,7 +101,7 @@ hr {
 
 blockquote > p {
 	margin-bottom: 0 !important;
-	line-height: 5px !important;
+	line-height: 15px !important;
 	margin-bottom: 5px !important;
 }
 
@@ -124,7 +124,8 @@ blockquote > p {
 }
 
 .btn-small {
-	padding: 2px 5px;
+	font-size: 0.825em;
+	padding: 1px 2px;
 }
 
 

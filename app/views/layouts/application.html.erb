@@ -23,9 +23,10 @@
             <span class="icon-bar"></span>
           </button>
           <% if false %>
-          <a class="brand" href="<%= root_path %>"><span class="logo-start">Start</span><span class="logo-ech">ECH</span></a>
+          <a class="brand" href=""><span class="logo-start">Start</span><span class="logo-ech">ECH</span></a>
           <% end %>
-          <a class="brand" href="<%= root_path %>"><strong>u</strong>bjective</a>
+
+          <a class="brand" href="<% if user_signed_in? %><%= tasks_path(current_user) %><% else %><%= root_path %><% end %>"><strong>u</strong>bjective</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="divider-vertical"></li>
@@ -49,16 +50,16 @@
                     <li class="nav-header">Hello!</li>
                     <li><span class="text_in_dropdown"><strong>u</strong>bjective will help you <strong>organize</strong> and <strong>keep track</strong> of your personal goals. Additionally it can show you cool tasks others have shared with the world, which you may clone for yourself!</span></li>
                     <li class="divider"></li>
+                    <li class="nav-header">Profile options</li>
+                    <li><%= link_to '<i class="icon-user"></i>'.html_safe + ' Edit Profile', edit_user_registration_path %></li>
+                    <li class="divider"></li>
                     <li class="nav-header">You can also check:</li>
                     <li><a href="#">Terms of Service</a></li>
                     <li><a href="#">Privacy Policy</a></li>
                     <li><a href="#">Contact Us</a></li>
-                    <li class="divider"></li>
-                    <li class="nav-header">Profile options</li>
-                    <li><%= link_to '<i class="icon-user"></i>'.html_safe + ' Edit Profile', edit_user_registration_path %></li>
-                    <li><%= link_to '<i class="icon-off"></i> Log Out'.html_safe, logout_path %></li>
                   </ul>
                 </li>
+                <li><%= link_to '<i class="icon-off"></i> Log Out'.html_safe, logout_path %></li>
                 <% else %>
                 <li><%= link_to 'Log in', login_path %></li>
                 <li class="divider-vertical"></li>
