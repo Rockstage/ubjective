@@ -24,3 +24,11 @@ blockquote:hover {
 blockquote.completed {
 	border-left: 5px solid rgb(90,190,90);
 }
+
+blockquote.completed p {
+	color: #999999;
+}
+
+blockquote.completed .btn {
+	opacity: 0.65;
+}

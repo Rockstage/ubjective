@@ -124,7 +124,7 @@ blockquote > p {
 }
 
 .btn-small {
-	font-size: 0.825em;
+	font-size: 0.815em;
 	padding: 1px 2px;
 }
 
@@ -134,6 +134,7 @@ blockquote > p {
 
 .accordion-inner {
 	margin-left: 0;
+	padding: 0;
 }
 
 }
