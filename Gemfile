@@ -11,6 +11,7 @@ gem 'devise'
 gem 'acts_as_list'
 gem 'deep_cloneable', '~> 1.5.2'
 gem 'rename'
+gem 'introjs-rails'
 
 group :development, :test do
 	gem 'sqlite3'

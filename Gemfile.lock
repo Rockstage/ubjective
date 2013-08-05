@@ -52,6 +52,9 @@ GEM
       multi_json (~> 1.0)
     hike (1.2.3)
     i18n (0.6.1)
+    introjs-rails (0.4.0)
+      sass-rails (>= 3.2)
+      thor (~> 0.14)
     journey (1.0.4)
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
@@ -131,6 +134,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   deep_cloneable (~> 1.5.2)
   devise
+  introjs-rails
   jquery-rails
   pg
   rails (= 3.2.13)

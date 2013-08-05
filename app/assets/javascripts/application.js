@@ -15,5 +15,6 @@
 //= require jquery.ui.touch-punch
 //= require jquery_ujs
 //= require bootstrap
+//= require introjs
 //= require_self
 //= require_tree .

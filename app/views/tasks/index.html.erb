@@ -1,12 +1,26 @@
-<h1>My tasks and ubjectives</h1><%= link_to 'New Task', new_task_path, class: 'btn btn-primary' %>
+<h1>My tasks and ubjectives</h1>
+<%= link_to 'New Task', new_task_path, class: 'btn btn-primary', :data => { :'intro' => 'Start by adding a Task', :'step' => '1' } %>
+<% if @user.tasks.exists? %>
+  <% if @user.tasks[2] %>
+  <% else %>
+  <a class="btn btn-success" href="javascript:void(0);" onclick="javascript:introJs().goToStep(2).start();" data-intro="Now other people can do the tasks you shared with the world. <hr /> Make a How-To guide, <hr />Share a challenge, <hr />Make a fun everyday task public, <hr />and enjoy what you do!" data-step="5">How it works</a>
+  <% end %>
+<% else %>
+    <a class="btn btn-success" href="javascript:void(0);" onclick="javascript:introJs().start();">How it works</a>
+<% end %>
 <hr />
+
 
 <div class="accordion" id="accordion2">
   <% @tasks.each do |task| %>
   <div class="accordion-group">
     <div class="accordion-heading">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= task.id %>">
+        <% if task == @tasks[0] %>
+        <blockquote data-intro="This is your Task, you can have many tasks and each can have many ubjectives" data-step="2">
+        <% else %>
         <blockquote>
+        <% end %>
           <h3><%= task.title %></h3><small id="tasks_objectives_completed"><%= task.objectives.completed.count %> / <%= task.objectives.count %> tasks completed.</small>
           <p><%= task.description %></p>
           <div class="progress progress-striped active">
@@ -17,7 +31,11 @@
           <% if task.public %>
             <%= link_to "Make Private", private_task_path(task.id) %> |
           <% else %>
-            <%= link_to "Make Public", public_task_path(task.id) %> |
+            <% if task == @tasks[0] %>
+            <%= link_to "Make Public", public_task_path(task.id), :data => { :'intro' => 'To share a task simply click - Make Public', :'step' => '4' } %> |
+            <% else %>
+            <%= link_to "Make Public", public_task_path(task.id) %> | 
+            <% end %>
           <% end %>
           <%= link_to "Remove Task", task_path(task), method: :delete, data: { confirm: "Are you sure?" } %>
           <% if task.author != current_user.profile_name %>
@@ -28,7 +46,7 @@
       </a>
     </div>
     <% if task == @tasks[0] %>
-    <div id="collapse<%= task.id %>" class="accordion-body collapse in">
+    <div id="collapse<%= task.id %>" class="accordion-body collapse in" data-intro="Add new ubjectives from here. You can rearrange them with Drag and Drop and show/hide them by clicking on the parent task." data-step="3">
     <% else %>
     <div id="collapse<%= task.id %>" class="accordion-body collapse">
     <% end %>
@@ -67,13 +85,6 @@
   </div>
   <% end %>
 </div>
-
-
-<!-- MODALS -->
-
-
-
-
 
 
 
