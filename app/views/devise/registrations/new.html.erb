@@ -14,9 +14,10 @@
   </fieldset>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up" %> |
-    <%= link_to "Privacy Policy", "#" %>
+    <%= f.button :submit, "Sign up", class: 'btn btn-success' %> |
+    <%= link_to "Privacy Policy", "#" %><br />
+    <%= render "devise/shared/links" %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+

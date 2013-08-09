@@ -45,7 +45,8 @@
                     <li><span class="text_in_dropdown"><strong>u</strong>bjective will help you <strong>organize</strong> and <strong>keep track</strong> of your personal goals. Additionally it can show you cool tasks others have shared with the world, which you may clone for yourself!</span></li>
                     <li class="divider"></li>
                     <li class="nav-header">Profile options</li>
-                    <li><%= link_to '<i class="icon-user"></i>'.html_safe + ' Edit Profile', edit_user_registration_path %></li>
+                    <li><%= link_to '<i class="icon-user"></i> Edit Profile'.html_safe, edit_user_registration_path %></li>
+                    <li><%= link_to '<i class="icon-globe"></i> Authentications'.html_safe, authentications_path %></li>
                     <li class="divider"></li>
                     <li class="nav-header">You can also check:</li>
                     <li><a href="#">Terms of Service</a></li>
@@ -53,13 +54,12 @@
                     <li><a href="#">Contact Us</a></li>
                   </ul>
                 </li>
-                <li><%= link_to "Authentications", authentications_path %></li>
                 <li class="divider-vertical"></li>
                 <li><%= link_to '<i class="icon-off"></i> Log Out'.html_safe, logout_path %></li>
                 <% else %>
-                <li><%= link_to 'Log in', login_path %></li>
-                <li><%= link_to 'Facebook', user_omniauth_authorize_path(:facebook) %></li>
-                <li><%= link_to 'Twitter', user_omniauth_authorize_path(:twitter) %></li>
+                <li><%= link_to 'Sign in', login_path %></li>
+                <li><%= link_to 'Sign in with Facebook', user_omniauth_authorize_path(:facebook) %></li>
+                <li><%= link_to 'Sign in with Twitter', user_omniauth_authorize_path(:twitter) %></li>
                 <li class="divider-vertical"></li>
                 <li><%= link_to 'Register', register_path %></li>
                 <% end %>

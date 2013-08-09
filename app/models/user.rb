@@ -7,7 +7,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :profile_name, :role
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :profile_name, :role, :current_password
+
+  after_destroy :cleanauth
 
   validates :email, presence: true, uniqueness: true
 
@@ -47,6 +49,11 @@ class User < ActiveRecord::Base
     else
       super
     end
+  end
+
+  private
+  def cleanauth
+    self.authentications.destroy_all
   end
 
 end
