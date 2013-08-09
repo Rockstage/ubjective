@@ -12,6 +12,11 @@ gem 'acts_as_list'
 gem 'deep_cloneable', '~> 1.5.2'
 gem 'rename'
 gem 'introjs-rails'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'twitter'
+gem 'fb_graph'
+gem 'nifty-generators'
 
 group :development, :test do
 	gem 'sqlite3'
@@ -50,3 +55,5 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+gem "mocha", :group => :test

@@ -1,0 +1,17 @@
+<h2>Sign up</h2>
+ 
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+ <%= devise_error_messages! %>
+<h3>We require your Email so you can access the same profile with different social network accounts.</h3>
+<%= f.input :email %>
+<%= f.input :profile_name %>
+ 
+<% if @user.password_required? %>
+<%= f.input :password %>
+<%= f.input :password_confirmation %>
+<% end %>
+ 
+<div><%= f.submit "Sign up" %></div>
+<% end %>
+ 
+<%= render "devise/shared/links" %>

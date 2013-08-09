@@ -1,5 +1,7 @@
 Ubjective::Application.routes.draw do
   
+  resources :authentications
+
   resources :home
   root to: 'home#index'
 
@@ -9,7 +11,10 @@ Ubjective::Application.routes.draw do
     get '/logout', to: 'devise/sessions#destroy', as: :logout
   end
 
-  devise_for :users, skip: [:sessions]
+  #devise_for :users, skip: [:sessions]
+  #devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}, controllers: {omniauth_callbacks: "authentications", registrations: "registrations"}
+  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"},
+                   controllers: {omniauth_callbacks: "authentications", registrations: "registrations"}
 
   as :user do
     get "/login" => 'devise/sessions#new', as: :new_user_session
