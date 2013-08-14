@@ -58,8 +58,8 @@
                 <li><%= link_to '<i class="icon-off"></i> Log Out'.html_safe, logout_path %></li>
                 <% else %>
                 <li><%= link_to 'Sign in', login_path %></li>
-                <li><%= link_to 'Sign in with Facebook', user_omniauth_authorize_path(:facebook) %></li>
-                <li><%= link_to 'Sign in with Twitter', user_omniauth_authorize_path(:twitter) %></li>
+                <li><%= link_to 'Facebook', user_omniauth_authorize_path(:facebook) %></li>
+                <li><%= link_to 'Twitter', user_omniauth_authorize_path(:twitter) %></li>
                 <li class="divider-vertical"></li>
                 <li><%= link_to 'Register', register_path %></li>
                 <% end %>
