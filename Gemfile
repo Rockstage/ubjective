@@ -17,6 +17,8 @@ gem 'omniauth-facebook'
 gem 'twitter'
 gem 'fb_graph'
 gem 'nifty-generators'
+gem 'koala'
+gem 'certified'
 
 group :development, :test do
 	gem 'sqlite3'

@@ -2,7 +2,7 @@
 <hr />
 
 <% @tasks.each do |task| %>
-<% if task.user.id %>
+<% if task.user %>
 	<blockquote>
 	<h3><%= task.title %></h3><p><em><%= task.description %></em></p>
 	<small>Shared by: <em><%= task.user.profile_name %></em> | Original author: <em><%= task.author %> &copy;</em> | Last update: <%= time_ago_in_words(task.updated_at) + " ago" %></small>

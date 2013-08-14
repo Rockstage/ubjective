@@ -30,6 +30,7 @@
           <%= link_to "Update", edit_task_path(task) %> |
           <% if task.public %>
             <%= link_to "Make Private", private_task_path(task.id) %> |
+            <%= link_to "Post on Facebook (Beta)", share_task_path(task.id) %> |
           <% else %>
             <% if task == @tasks[0] %>
             <%= link_to "Make Public", public_task_path(task.id), :data => { :'intro' => 'To share a task simply click - Make Public', :'step' => '4' } %> |

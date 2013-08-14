@@ -42,6 +42,8 @@ Ubjective::Application.routes.draw do
   match 'tasks/:task_id/public' => 'tasks#public', :as => :public_task
   match 'tasks/:task_id/private' => 'tasks#private', :as => :private_task
   match 'tasks/:task_id/clone' => 'tasks#clone', :as => :clone_task
+  match 'tasks/:task_id/share' => 'tasks#share_to_facebook', :as => :share_task
+  match 'auth/failure', to: redirect('/')
   # match 'tasks/:task_id/objectives/:objective_id/sort' => 'objectives#sort', :as => :sort_task_objectives
 
   # get '/:id', to: 'profiles#show', as: 'profile'

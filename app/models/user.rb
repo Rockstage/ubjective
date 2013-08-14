@@ -51,9 +51,24 @@ class User < ActiveRecord::Base
     end
   end
 
+
+
+  def facebook
+    @facebook ||= Koala::Facebook::API.new(:token)
+    block_given? ? yield(@facebook) : @facebook
+  rescue Koala::Facebook::APIError => e
+    logger.info e.to_s
+    nil # or consider a custom null object
+  end
+
+  def share_task_to_facebook
+    facebook { |fb| fb.put_wall_post("testing") }
+  end
+
   private
   def cleanauth
     self.authentications.destroy_all
+    self.tasks.destroy_all
   end
 
 end

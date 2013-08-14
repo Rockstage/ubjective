@@ -135,6 +135,10 @@ class TasksController < ApplicationController
     redirect_to tasks_path(current_user)
   end
 
+  def share_to_facebook
+    current_user.facebook.put_wall_post("I just posted a new Task on www.ubjective.com!")
+  end
+
   def private
     @task = @user.tasks.find(params[:task_id])
     @task.public = false
