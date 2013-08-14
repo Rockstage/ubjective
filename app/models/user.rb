@@ -54,7 +54,8 @@ class User < ActiveRecord::Base
 
 
   def facebook
-    @facebook ||= Koala::Facebook::API.new(:token)
+    access_token = self.authentications.find_by_provider('facebook').token
+    @facebook ||= Koala::Facebook::API.new(access_token)
     block_given? ? yield(@facebook) : @facebook
   rescue Koala::Facebook::APIError => e
     logger.info e.to_s

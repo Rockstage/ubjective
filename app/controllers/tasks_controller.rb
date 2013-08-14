@@ -1,8 +1,8 @@
 class TasksController < ApplicationController
-  before_filter :authenticate_user!, except: [:browse]
+  before_filter :authenticate_user!, except: [:browse, :public_show]
   before_filter :find_user
   before_filter :find_task, only: [:edit, :update, :destroy]
-  before_filter :ensure_proper_user, except: [:browse, :clone]
+  before_filter :ensure_proper_user, except: [:browse, :clone, :public_show]
   # GET /tasks
   # GET /tasks.json
   def index
@@ -18,7 +18,7 @@ class TasksController < ApplicationController
 
   # Shows all public tasks by all users
   def browse
-    @tasks = Task.public.find(:all)
+    @tasks = Task.public.all(:order => 'updated_at DESC')
   end
 
   # GET /tasks/1
@@ -135,8 +135,21 @@ class TasksController < ApplicationController
     redirect_to tasks_path(current_user)
   end
 
+  def public_show
+    @task = Task.public.find(params[:task_id])
+    if @task.blank?
+      redirect_to browse_path
+    end
+  end
+
   def share_to_facebook
-    current_user.facebook.put_wall_post("I just posted a new Task on www.ubjective.com!")
+    @task = @user.tasks.find(params[:task_id])
+    if @user.authentications.where(:provider == 'facebook').exists?
+      current_user.facebook.put_wall_post(@task.title + ", live on " + root_url + public_show_path(@task) + " - What is your ubjective?")
+      redirect_to tasks_path(current_user), notice: 'Task was successfully Shared on your Stream.'
+    else
+    redirect_to tasks_path(current_user), notice: 'You need to sign in with Facebook first.'
+    end
   end
 
   def private

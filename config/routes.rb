@@ -39,6 +39,7 @@ Ubjective::Application.routes.draw do
   get '/browse', to: 'tasks#browse'
   match 'tasks/:task_id/objectives/:objective_id/complete' => 'objectives#complete', :as => :complete_objective
   match 'tasks/:task_id/objectives/:objective_id/uncomplete' => 'objectives#uncomplete', :as => :uncomplete_objective
+  match '/browse/:task_id/' => 'tasks#public_show', :as => :public_show
   match 'tasks/:task_id/public' => 'tasks#public', :as => :public_task
   match 'tasks/:task_id/private' => 'tasks#private', :as => :private_task
   match 'tasks/:task_id/clone' => 'tasks#clone', :as => :clone_task
