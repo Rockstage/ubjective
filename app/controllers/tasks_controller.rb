@@ -145,7 +145,7 @@ class TasksController < ApplicationController
   def share_to_facebook
     @task = @user.tasks.find(params[:task_id])
     if @user.authentications.where(:provider == 'facebook').exists?
-      current_user.facebook.put_wall_post(@task.title + ", live on " + root_url + public_show_path(@task) + " - What is your ubjective?")
+      current_user.facebook.put_wall_post(@task.title + ", live on www.ubjective.com" + public_show_path(@task.id) + " - What is your ubjective?")
       redirect_to tasks_path(current_user), notice: 'Task was successfully Shared on your Stream.'
     else
     redirect_to tasks_path(current_user), notice: 'You need to sign in with Facebook first.'
