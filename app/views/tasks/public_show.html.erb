@@ -5,49 +5,29 @@
   <h3><%= @task.title %></h3><small id="tasks_objectives_completed"><%= @task.objectives.completed.count %> / <%= @task.objectives.count %> tasks completed.</small>
   <p><%= @task.description %></p>
   <div class="progress progress-striped active">
-    <div class="bar" style="width: <%= progress_objectives(@task) %>;"></div> | <%= progress_objectives(@task) %>
+    <div class="bar" style="width: 0%;"></div> | 0%
   </div>
   <small id="tasks_last_update">Last update: <%= time_ago_in_words(@task.updated_at) + " ago" %></small>
-  <%= link_to "Update", edit_task_path(@task) %> |
-  <% if @task.public %>
-    <%= link_to "Make Private", private_task_path(@task.id) %> |
-    <%= link_to "Post on Facebook (Beta)", share_task_path(@task.id) %> |
-    <%= link_to "Preview Task", public_show_path(@task.id) %> |
-  <% else %>
-    <%= link_to "Make Public", public_task_path(task.id) %> | 
-  <% end %>
-  <%= link_to "Remove Task", task_path(@task), method: :delete, data: { confirm: "Are you sure?" } %>
-  <% if @task.author != current_user.profile_name %>
+  <%= link_to "Post on Facebook", share_task_path(@task.id) %>
+  
+  
     <span class="pull-right padding-right" id="tasks_author">Original author: <em><%= @task.author %> &copy;</em></span>
-  <% end %>
+  
   <hr />
 </blockquote>
 
-<ol id="objectives" data-update-url="<%= sort_task_objectives_path(@user, @task) %>">
-          <%= link_to 'Add new ubjective', new_task_objective_path(current_user, @task), class: 'btn btn-small btn-primary' %><hr />
+<ol id="objectives">
           <% if @task.objectives %>
             <% @task.objectives.order("position").each do |objective| %>
               <%= content_tag_for :li, objective do %>
-                <% if objective.completed %>
-                <blockquote class="completed">
-                  <p class="lead"><%= objective.objective %> <span class="inactive">(completed)</span></p>
-                  <small>Last update: <%= time_ago_in_words(objective.updated_at) + " ago" %></small>
-                  <%= link_to "Uncomplete".html_safe, uncomplete_objective_path(@task.id, objective.id), class: 'btn btn-small' %>
-                  <span class="btn btn-small" id="handle"><i class="icon-arrow-up"></i><i class="icon-arrow-down"></i></span>
-                  <%= link_to 'Update', edit_task_objective_path(@task, objective), class: 'btn btn-small' %> | 
-                  <%= link_to "<i class='icon-remove'></i> Remove".html_safe, task_objective_path(@task, objective), class: 'btn btn-small', method: :delete, data: { confirm: 'Are you sure you want to remove this ubjective?' } %>
-                </blockquote>
-                <% else %>
+                
                 <blockquote class="incompleted">
                   <p class="lead"><%= objective.objective %></p>
                   <small>Created: <%= time_ago_in_words(objective.created_at) + " ago" %></small>
-                  <%= link_to "<i class='icon-ok icon-white'></i> Complete".html_safe, complete_objective_path(@task.id, objective.id), class: 'btn btn-small btn-success' %>
-                  <span class="btn btn-small" id="handle"><i class="icon-arrow-up"></i><i class="icon-arrow-down"></i></span>
-                  <%= link_to 'Update', edit_task_objective_path(@task, objective), class: 'btn btn-small' %> | 
-                  <%= link_to "<i class='icon-remove'></i> Remove".html_safe, task_objective_path(@task, objective), class: 'btn btn-small', method: :delete, data: { confirm: 'Are you sure you want to remove this ubjective?' } %>
+                  
 
                 </blockquote>
-                <% end %>
+                
               <% end %>
             <% end %>
           <% end %>
