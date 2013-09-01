@@ -1,3 +1,37 @@
+<div data-role="header">
+  <a href="#" data-rel="back" data-direction="reverse">Back</a>
+  <h1>My Tasks and Ubjectives</h1>
+</div>
+
+<div data-role="content">
+  <%= link_to 'New Task', new_task_path, data: { role: 'button' } %><br />
+  <ul data-role="listview" data-inset="true" data-filter="true">
+    <% @tasks.each do |task| %>
+      <li>
+        <a href="<%= task_path(task) %>">
+          <h3><%= task.title %></h3>
+          <p><%= task.description %></p>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<div data-role="footer" data-position="fixed">
+  <div data-role="navbar" icon-position="bottom">
+    <ul>
+      <li><%= link_to "Options", "#sidebar", data: { icon: 'gear' } %></li>
+      <li><%= link_to "Music", "#music" %></li>
+      <li><%= link_to "Tasks", tasks_path, data: { icon: 'check'} %></li>
+      <li><%= link_to "Multi-task", "#", data: { icon: 'check' } %></li>
+      <li><%= link_to "Browse", browse_path, data: { icon: 'grid' } %></li>
+    </ul>
+  </div>
+</div>
+
+
+
+<% if false %>
 <h1>My tasks and ubjectives</h1>
 <%= link_to 'New Task', new_task_path, class: 'btn btn-primary', :data => { :'intro' => 'Start by adding a Task', :'step' => '1' } %>
 <% if @user.tasks.exists? %>
@@ -87,7 +121,7 @@
   <% end %>
 </div>
 
-
+<% end %>
 
 
 

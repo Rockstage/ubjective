@@ -1,3 +1,5 @@
+<div data-role="header"><h1>Ubjective</h1></div>
+  <div data-role="content">
       <div class="hero-unit">
         <h1 style="font-weight: normal">Welcome to <strong>u</strong>bjective!</span></h1>
         <h3>Take control of the chaos, or share it.</h3>
@@ -11,22 +13,21 @@
           
         <% end %>
       </div>
-
-      <div class="row">
-        <div class="span4">
+      <div class="ui-grid-b ui-responsive">
+        <div class="ui-block-a padding-right">
           <h2><i class="icon-ok"></i>Task Management<br /><small>Simple. Elegant. Intuitive.</small></h2>
           <p>"It's like having a personal Task Management Assistant". It intuitively <strong>rearranges to your needs</strong>, it helps you focus on <strong>one task at a time</strong>, and shows you your <strong>real-time progress</strong>.</p>
             <p><%= link_to "Register Now &raquo;".html_safe, new_user_registration_path, class: 'btn btn-success' %></p>
         </div>
-        <div class="span4" id="Resources">
+        <div class="ui-block-b padding-right" id="Resources">
           <h2><i class="icon-map-marker"></i>Tasks meet Social<br /><small>Sharing tasks just got cooler!</small></h2>
           <p>You can share your <strong>daily tasks</strong> or even <strong>lifetime goals</strong> with a simple click of a button and meet others who share your goals.</p>
           <p><%= link_to "Browse Tasks &raquo;".html_safe, browse_path, class: 'btn' %></p>
         </div>
-        <div class="span4" id="Intel">
+        <div class="ui-block-c" id="Intel">
           <h2><i class="icon-globe"></i>No strings attached<br /><small>No more unwanted spam!</small></h2>
           <p>No notifications, no email alerts, no popovers, no countdown timers. Do <strong>what you want</strong> to do, <strong>when you want</strong> to do it, so you can <strong>do it right</strong>.</p>
           <p><%= link_to "Log In &raquo;".html_safe, new_user_session_path, class: 'btn' %></p>
         </div>
       </div>
-
+  </div>

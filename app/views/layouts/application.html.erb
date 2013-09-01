@@ -1,11 +1,9 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Ubjective</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Social Task Manager">
     <meta name="author" content="">
     <%= stylesheet_link_tag    "application", :media => "all" %>
@@ -14,6 +12,45 @@
   </head>
 
   <body>
+    <div id="page" data-role="page" data-theme="c">
+
+      <div data-role="panel" data-display="reveal" id="sidebar" data-theme="a">
+        <h3>Welcome <%= current_user.first_name %></h3>
+        <hr />
+        <ul data-role="listview" data-theme="a">
+          <% if user_signed_in? %>
+          <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+          <li><%= link_to "Authentications", authentications_path %></li>
+          <li><%= link_to "Logout", logout_path %></li>
+          <% end %>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Contact Us</a></li>
+          
+        </ul>
+        <br />
+        <%= link_to "Close", "#sidebar", data: { rel: 'close', role: 'button', icon: 'minus' } %>
+      </div>
+
+      <div data-role="panel" data-display="overlay" data-position="right" data-theme="a" id="music">
+        <div id="player">
+          <audio controls loop class="music_player">
+            <source src="<%= asset_path("RockstageSoundtrackFinal.mp3") %>" type="audio/mpeg">
+          </audio>
+        </div>
+        <br />
+          <%= link_to "Close", "#music", data: { rel: 'close', role: 'button', icon: 'minus' } %>
+      </div>
+
+      <%= yield %>
+
+      <div data-role="footer">
+      </div>
+    </div>
+
+    <!-- OLD TEMPLATE -->
+    <% if false %>
+
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
@@ -85,11 +122,13 @@
       </footer>
 
     </div> <!-- /container -->
+    <% end %>
+    <!-- OLD TEMPLATE END -->
+
+
+
+
+
     <%= javascript_include_tag "application" %>
-    <script>
-      $('.dropdown-toggle').dropdown()
-    </script>
-
-
   </body>
 </html>

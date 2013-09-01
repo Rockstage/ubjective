@@ -8,52 +8,14 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require first
- *= require bootstrap
+ * require first
+ * require bootstrap
+ *= require jquery.mobile
  *= require_self
- *= require mobile
- *= require introjs
- *= require_tree .
+ * require mobile
+ * require introjs
+ * require_tree .
  */
-
-body {
-	
-}
-
-ul {
-	list-style: none;
-}
-
-.image-left-top {
-	position: absolute;
-	top: 40px;
-	left: 0px;
-	width: 7.5vmax;
-}
-
-.image-right-bottom {
-	position: absolute;
-	bottom: 0px;
-	right: 0px;
-	width: 7.5vmax;
-}
-
-.logo-start {
-	font-size: 1em;
-}
-
-.logo-ech {
-	text-transform: uppercase;
-	font-size: 0.725em
-}
-
-span.inactive {
-	color: rgb(140,140,140);
-}
-
-
-
-
 
 .ui-sortable-placeholder {  
     border: 3px dashed #aaa;  
@@ -71,54 +33,16 @@ span.inactive {
 	padding-left: 1em;
 }
 
-
-/* OVERWRITING TWITTER BOOTSTRAP */
-
-.accordion div {
-	font-style: italic;
-	border: none;
-}
-
-.accordion-inner {
-	margin-left: 40px;
-}
-
-li.dropdown > a.dropdown-toggle {
-	padding-top: 0;
-	padding-bottom: 0;
-}
-
-.dropdown-toggle img {
-	height: 40px;
-	width: 50px;
-}
-
-.text_in_dropdown {
-	display: block;
-	padding: 3px 20px;
-	clear: both;
-	line-height: 20px;
-	color: #333333;
-	width: 200px;
-}
-
-li.dropdown {
-	padding: 10px 15px 10px;
-}
-
 .hero-unit {
+	padding: 30px;
 	background-image: url("tree.png");
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 50% 60%;
+	border-radius: 25px;
 }
 
-*:hover,
-*:focus {
-	-webkit-transition: 0.5s;
-	transition: 0.5s;
+#player {
+	
 }
-
-
-
 

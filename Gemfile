@@ -19,6 +19,7 @@ gem 'fb_graph'
 gem 'nifty-generators'
 gem 'koala'
 gem 'certified'
+gem 'jquery_mobile_rails'
 
 group :development, :test do
 	gem 'sqlite3'
