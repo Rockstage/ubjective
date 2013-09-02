@@ -15,7 +15,11 @@
     <div id="page" data-role="page" data-theme="c">
 
       <div data-role="panel" data-display="reveal" id="sidebar" data-theme="a">
+        <% if user_signed_in? %>
         <h3>Welcome <%= current_user.first_name %></h3>
+        <% else %>
+        <h3>Register or Login!</h3>
+        <% end %>
         <hr />
         <ul data-role="listview" data-theme="a">
           <% if user_signed_in? %>
