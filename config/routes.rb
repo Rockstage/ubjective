@@ -1,5 +1,8 @@
 Ubjective::Application.routes.draw do
   
+  
+
+
   resources :authentications
 
   resources :home
@@ -25,6 +28,7 @@ Ubjective::Application.routes.draw do
   
 
   scope ":profile_name" do
+    resources :projects
     resources :tasks do
       resources :objectives do
         collection { post :sort }

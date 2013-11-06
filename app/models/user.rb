@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
               message: 'Must be formatted correctly.'
             }
 
+  has_many :projects
   has_many :tasks
   has_many :objectives
   # Instead of having objectives through tasks, we would access objectives by tasks.objectives

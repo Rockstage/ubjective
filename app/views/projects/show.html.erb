@@ -1,0 +1,11 @@
+<h1><%= @project.title %></h1>
+<hr />
+<p><strong>Our Mission: <%= @project.mission %></strong></p>
+<p><%= @project.category %></p>
+<p><%= @project.description %></p>
+<p>Location: <%= @project.location %></p>
+<p>Author: <%= @project.user.profile_name %></p>
+
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>
