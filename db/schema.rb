@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131106161621) do
+ActiveRecord::Schema.define(:version => 20131111143528) do
 
   create_table "authentications", :force => true do |t|
     t.string   "user_id"
@@ -61,6 +61,28 @@ ActiveRecord::Schema.define(:version => 20131106161621) do
 
   add_index "tasks", ["user_id"], :name => "index_tasks_on_user_id"
 
+  create_table "user_educations", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "institution"
+    t.string   "edu_level"
+    t.string   "edu_field"
+    t.date     "edu_date"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "user_educations", ["user_id"], :name => "index_user_educations_on_user_id"
+
+  create_table "user_languages", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "language"
+    t.string   "skill_level"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "user_languages", ["user_id"], :name => "index_user_languages_on_user_id"
+
   create_table "users", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -78,6 +100,13 @@ ActiveRecord::Schema.define(:version => 20131106161621) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.datetime "birthday"
+    t.string   "gender"
+    t.string   "location"
+    t.string   "contact"
+    t.text     "personal_goal"
+    t.text     "pro_goal"
+    t.text     "interests"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

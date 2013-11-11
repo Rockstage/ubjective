@@ -3,11 +3,22 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   has_many :authentications
+  has_many :projects
+  has_many :tasks
+  has_many :objectives
+  has_many :user_languages
+  has_many :user_educations
+
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :profile_name, :role, :current_password
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :profile_name, :role, :current_password,
+                  :birthday, :gender, :location, :contact, :personal_goal, :pro_goal, :interests,
+                  :user_languages_attributes, :user_educations_attributes
+                  
+  accepts_nested_attributes_for :user_languages, allow_destroy: true
+  accepts_nested_attributes_for :user_educations, allow_destroy: true
 
   after_destroy :cleanauth
 
@@ -17,12 +28,14 @@ class User < ActiveRecord::Base
               uniqueness: true, 
               format: {
               with: /\A[a-zA-Z0-9_-]+\z/,
-              message: 'Must be formatted correctly.'
+              message: "Must be formatted correctly using: a-z, A-Z, 0-9, - and _ "
             }
 
-  has_many :projects
-  has_many :tasks
-  has_many :objectives
+  validates :birthday, presence: true
+
+  # accepts_nested_attributes_for :model
+  # also add to attr_accessible :model_attributes
+  
   # Instead of having objectives through tasks, we would access objectives by tasks.objectives
 
   def full_name

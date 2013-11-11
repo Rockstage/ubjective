@@ -1,0 +1,12 @@
+<div class="span6">
+<fieldset>
+	<%= f.input :institution, label: 'Name of institution' %>
+	<%= f.input :edu_level, label: 'Level of Education', placeholder: '(University)' %>
+	<%= f.input :edu_field, label: 'Field of Education', placeholder: '(Computer science & Electronics)' %>
+	<%= f.input :edu_date, label: 'Year of Graduation', as: :date, start_year: Date.today.year + 20,
+                           end_year: Date.today.year - 90, order: [:year], input_html: { } %>
+    <%= f.hidden_field :_destroy %>
+    <%= link_to "remove", '#', class: "remove_fields" %>
+    <hr />
+</fieldset>
+</div>

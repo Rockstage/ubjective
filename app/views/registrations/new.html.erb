@@ -6,6 +6,8 @@
 <p>We will Not share it with anyone outside ubjective.com without your premission.</p>
 <%= f.input :email %>
 <%= f.input :profile_name %>
+<%= f.input :birthday, as: :date, start_year: Date.today.year - 12,
+                           end_year: Date.today.year - 90, order: [:day, :month, :year], input_html: { } %>
  
 <% if @user.password_required? %>
 <%= f.input :password %>

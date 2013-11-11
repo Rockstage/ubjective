@@ -16,9 +16,42 @@
  *= require_tree .
  */
 
-body {
-	
+html, body {
+	height: 100%;
 }
+
+body {
+
+}
+
+#blueprint {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-image: url("blueprint-texture-big.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	z-index: -1;
+}
+
+/*
+#blueprint {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: -1;
+	background-image: url("Blueprint-grid.png");
+	background-repeat: repeat;
+	background-size: 10%;
+	-webkit-transform: rotate3d(1,0,0,5deg) translateZ(140px);
+}
+*/
+
+/* The smaller the perspective value the deeper it is */
 
 ul {
 	list-style: none;
@@ -106,12 +139,16 @@ li.dropdown {
 	padding: 10px 15px 10px;
 }
 
+
 .hero-unit {
 	background-image: url("tree.png");
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 50% 60%;
+	
 }
+
+
 
 *:hover,
 *:focus {
@@ -119,7 +156,14 @@ li.dropdown {
 	transition: 0.5s;
 }
 
+.add_fields_button {
+	margin-left: 20%;
+	margin-bottom: 25px;
+}
 
+.remove_fields {
+	margin-left: 25%;
+}
 
 
 

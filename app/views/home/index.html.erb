@@ -1,6 +1,6 @@
       <div class="hero-unit">
-        <h1 style="font-weight: normal">Welcome to <strong>u</strong>bjective!</span></h1>
-        <h3>Take control of the chaos, or share it.</h3>
+        <h1 style="font-weight: normal">Projects</h1>
+        <h3>Focused on making the world a better place.</h3>
         <% if user_signed_in? %>
           <p><a href="<%= tasks_path(current_user) %>" class="btn btn-primary btn-large">Tasks, now! &raquo;</a></p>
         <% else %>
@@ -29,4 +29,7 @@
           <p><%= link_to "Log In &raquo;".html_safe, new_user_session_path, class: 'btn' %></p>
         </div>
       </div>
+
+      <div id="blueprint">
+    </div>
 

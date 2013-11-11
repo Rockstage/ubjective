@@ -7,8 +7,63 @@
     <legend>About Me</legend>
     <%= f.input :first_name, input_html: { class: 'input-xxlarge' } %>
     <%= f.input :last_name, input_html: { class: 'input-xxlarge' } %>
+    <%= f.input :birthday, as: :date, start_year: Date.today.year - 12,
+                           end_year: Date.today.year - 90, order: [:day, :month, :year], input_html: { } %>
+    <%= f.input :gender, collection: ["Male", "Female"] %>
+    <%= f.input :location, input_html: { class: 'input-xxlarge' }, placeholder: 'Country, City' %>
+    <%= f.input :contact, input_html: { class: 'input-xxlarge' }, label: 'Contact Email' %>
+  </fieldset>
+
+
+
+  <fieldset>
+    <legend>Professional Info</legend>
+    <%= f.input :pro_goal, input_html: { rows: 2, class: 'input-xxlarge' }, label: 'Professional ubjective', placeholder: '(To use my expertiese on the International Space Station.)' %>
+  </fieldset>
+
+
+
+  <fieldset>
+    <% if @user.user_educations %>
+      <legend>Education</legend>
+    <% else %>
+      <legend>Education<small> - Adding Education Details highly increases your chances of getting invitied to projects seeking your expertise.</small></legend>
+    <% end %>
+    <div class="row">
+      <%= f.simple_fields_for :user_educations do |builder| %>
+        <%= render 'user_education_fields', f: builder %>
+      <% end %>
+      <%= link_to_add_fields "Add Education Details", f, :user_educations %> 
+    </div>
+  </fieldset>
+
+
+
+  <fieldset>
+    <% if @user.user_languages %>
+      <legend>Language skills</legend>
+    <% else %>
+      <legend>Language skills<small> - Communication matters. The more languages you know, the more doors they open.</small></legend>
+    <% end %>
+    <div class="row">
+      <%= f.simple_fields_for :user_languages do |builder| %> 
+        <%= render 'user_language_fields', f: builder %>
+      <% end %>
+      <%= link_to_add_fields "Add language", f, :user_languages %>
+    </div>
+  </fieldset>
+
+
+  <fieldset>
+    <legend>Additional Info</legend>
+    <%= f.input :personal_goal, input_html: { rows: 2, class: 'input-xxlarge' }, label: 'Personal Goal' %>
+    <%= f.input :interests, input_html: { rows: 2, class: 'input-xxlarge' } %>
+  </fieldset>
+
+  <fieldset>
+    <legend>Account Info</legend>
     <%= f.input :profile_name, input_html: { class: 'input-xxlarge'} %>
-    <%= f.input :email, disabled: true, hint: 'You cannot change your email adress', input_html: { class: 'input-xxlarge' } %>
+    <%= f.input :email, disabled: true, hint: 'You cannot change your email adress at this time.', input_html: { class: 'input-xxlarge' } %>
   </fieldset>
 
   <fieldset>
@@ -18,12 +73,10 @@
     <%= f.input :password_confirmation, input_html: { class: 'input-xxlarge', autocomplete: 'off' } %>
   </fieldset>
 
-  <% if false %>
     <fieldset>
       <legend>Confirm Changes</legend>
       <%= f.input :current_password, hint: "We need your current password to confirm your changes", input_html: { class: 'input-xxlarge', autocomplete: 'off' } %>
     </fieldset>
-  <% end %>
 
 
   <div class="form-actions">
