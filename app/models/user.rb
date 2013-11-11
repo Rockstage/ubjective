@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
   has_many :objectives
   has_many :user_languages
   has_many :user_educations
+  has_many :specialties, dependent: :destroy
+  has_many :expertises
+  has_many :skills
 
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -15,10 +18,12 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :profile_name, :role, :current_password,
                   :birthday, :gender, :location, :contact, :personal_goal, :pro_goal, :interests,
-                  :user_languages_attributes, :user_educations_attributes
+                  :user_languages_attributes, :user_educations_attributes,
+                  :specialties_attributes
                   
   accepts_nested_attributes_for :user_languages, allow_destroy: true
   accepts_nested_attributes_for :user_educations, allow_destroy: true
+  accepts_nested_attributes_for :specialties, allow_destroy: true
 
   after_destroy :cleanauth
 

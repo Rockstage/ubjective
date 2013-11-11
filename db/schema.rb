@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131111143528) do
+ActiveRecord::Schema.define(:version => 20131111165615) do
 
   create_table "authentications", :force => true do |t|
     t.string   "user_id"
@@ -22,6 +22,18 @@ ActiveRecord::Schema.define(:version => 20131111143528) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
+
+  create_table "expertises", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "specialty_id"
+    t.string   "expertise"
+    t.text     "details"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "expertises", ["specialty_id"], :name => "index_expertises_on_specialty_id"
+  add_index "expertises", ["user_id"], :name => "index_expertises_on_user_id"
 
   create_table "objectives", :force => true do |t|
     t.integer  "task_id"
@@ -48,6 +60,31 @@ ActiveRecord::Schema.define(:version => 20131111143528) do
   end
 
   add_index "projects", ["user_id"], :name => "index_projects_on_user_id"
+
+  create_table "skills", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "specialty_id"
+    t.integer  "expertise_id"
+    t.string   "skill"
+    t.integer  "skill_lvl"
+    t.text     "description"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "skills", ["expertise_id"], :name => "index_skills_on_expertise_id"
+  add_index "skills", ["specialty_id"], :name => "index_skills_on_specialty_id"
+  add_index "skills", ["user_id"], :name => "index_skills_on_user_id"
+
+  create_table "specialties", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "specialty"
+    t.string   "role"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "specialties", ["user_id"], :name => "index_specialties_on_user_id"
 
   create_table "tasks", :force => true do |t|
     t.integer  "user_id"

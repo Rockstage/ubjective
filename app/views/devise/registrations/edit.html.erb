@@ -21,7 +21,15 @@
     <%= f.input :pro_goal, input_html: { rows: 2, class: 'input-xxlarge' }, label: 'Professional ubjective', placeholder: '(To use my expertiese on the International Space Station.)' %>
   </fieldset>
 
+  <fieldset>
+    <legend>Specialities > Expertise > Skills </legend>
 
+      <%= f.simple_fields_for :specialties do |builder| %>
+        <%= render 'specialty_fields', f: builder %>
+      <% end %>
+      <%= link_to_add_fields "Add Specialty", f, :specialties %>
+
+  </fieldset>
 
   <fieldset>
     <% if @user.user_educations %>

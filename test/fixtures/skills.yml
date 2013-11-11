@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user: 
+  specialty: 
+  expertise: 
+  skill: MyString
+  skill_lvl: 1
+  description: MyText
+
+two:
+  user: 
+  specialty: 
+  expertise: 
+  skill: MyString
+  skill_lvl: 1
+  description: MyText

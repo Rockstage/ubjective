@@ -1,0 +1,8 @@
+<fieldset class="sub_fields span4">
+	<%= f.input :skill %>
+	<%= f.input :skill_lvl, collection: 1..10 %>
+	<%= f.input :description, input_html: { rows: 2 } %>
+	<%= f.hidden_field :_destroy %>
+    <%= link_to "remove skill", '#', class: "remove_fields" %>
+	<hr />
+</fieldset>

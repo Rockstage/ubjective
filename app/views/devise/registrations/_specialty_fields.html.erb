@@ -1,0 +1,13 @@
+<fieldset>
+	<%= f.input :specialty, input_html: { class: 'input-xxlarge' }, label: 'Specialty / Field', placeholder: 'Software / Engineering / Physics / Medicine / Design / etc.' %>
+	<%= f.input :role, input_html: { class: 'input-xxlarge' }, label: 'Role in projects (optional)', placeholder: 'Developer / Designer / Team Leader / etc.' %>
+	<%= f.hidden_field :_destroy %>
+    <%= link_to "remove specialty", '#', class: "remove_fields" %>
+
+    <%= f.simple_fields_for :expertises do |builder| %>
+    	<%= render 'expertise_fields', f: builder %>
+    <% end %>
+    <br />
+    <%= link_to_add_fields "Add Expertise to specialty", f, :expertises %>
+    <hr />
+</fieldset>

@@ -1,0 +1,13 @@
+<fieldset class="sub_fields">
+	<%= f.input :expertise, placeholder: 'App Developer / Robotics engineer / Astrophysics / Nanomedicine / Hardware prototype design / etc.', input_html: { class: 'input-xxlarge' } %>
+	<%= f.input :details, placeholder: 'optional', input_html: { rows: 2, class: 'input-xxlarge' } %>
+	<%= f.hidden_field :_destroy %>
+    <%= link_to "remove expertise", '#', class: "remove_fields" %>
+    <div class="row">
+    <%= f.simple_fields_for :skills do |builder| %>
+    	<%= render 'skill_fields', f: builder %>
+    <% end %>
+    <br />
+    <%= link_to_add_fields "Add Skill to expertise", f, :skills %>
+	</div>
+</fieldset>
