@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   # add excepts [browse and public show]
   before_filter :find_user
   before_filter :find_project, only: [:edit, :update, :destroy]
-  before_filter :ensure_proper_user, except: [:browse, :show]
+  before_filter :ensure_proper_user, except: [:browse, :show, :public_show]
   # GET /projects
   # GET /projects.json
   def index
@@ -18,6 +18,13 @@ class ProjectsController < ApplicationController
 
   def browse
     @projects = Project.public.all(:order => 'updated_at DESC')
+  end
+
+  def public_show
+    @project = Project.public.find(params[:project_id])
+    if @project.blank?
+      redirect_to projects_browse_path
+    end
   end
 
   # GET /projects/1

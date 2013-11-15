@@ -1,0 +1,14 @@
+<h1><%= @project.title %><% if @project.vision %><small> - <%= @project.vision %></small><% end %></h1>
+<hr class="colorful-border" />
+<h3><small class="gray">Our Mission:</small> <%= @project.mission %></h3>
+<p><span class="gray">Category: </span><strong><%= @project.category %></strong></p> 
+<hr />
+<p><span class="gray">Description:<br /></span><%= @project.description %></p><hr />
+<p><span class="gray">Location:</span> <%= @project.location %></p>
+<p><span class="gray">Author:</span> <%= @project.user.profile_name %></p>
+<p><span class="gray">Status:</span> <%= @project.status %></p>
+
+<% if @project.user == current_user %>
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<% end %>
+<%= link_to 'Back', projects_path %>
