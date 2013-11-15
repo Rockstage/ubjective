@@ -3,6 +3,8 @@ Ubjective::Application.routes.draw do
   
 
 
+
+
   resources :authentications
 
   resources :home
@@ -25,7 +27,13 @@ Ubjective::Application.routes.draw do
     delete "/logout" => 'devise/sessions#destroy', as: :destroy_user_session
   end
 
-  
+  resources :specialties, only: :index do
+    collection do
+      get :autocomplete
+    end
+  end
+
+  get 'user/:id', to: 'profile#show', as: 'profile'
 
   scope ":profile_name" do
     resources :projects
@@ -41,6 +49,7 @@ Ubjective::Application.routes.draw do
 #  end
 
   get '/browse', to: 'tasks#browse'
+  get '/projects', to: 'projects#browse', :as => :browse_projects
   match 'tasks/:task_id/objectives/:objective_id/complete' => 'objectives#complete', :as => :complete_objective
   match 'tasks/:task_id/objectives/:objective_id/uncomplete' => 'objectives#uncomplete', :as => :uncomplete_objective
   match '/browse/:task_id/' => 'tasks#public_show', :as => :public_show
@@ -49,6 +58,7 @@ Ubjective::Application.routes.draw do
   match 'tasks/:task_id/clone' => 'tasks#clone', :as => :clone_task
   match 'tasks/:task_id/share' => 'tasks#share_to_facebook', :as => :share_task
   match 'auth/failure', to: redirect('/')
+  match '/search', to: 'specialties#index', :as => :search
   # match 'tasks/:task_id/objectives/:objective_id/sort' => 'objectives#sort', :as => :sort_task_objectives
 
   # get '/:id', to: 'profiles#show', as: 'profile'

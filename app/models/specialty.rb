@@ -1,4 +1,7 @@
 class Specialty < ActiveRecord::Base
+
+  searchkick autocomplete: ['specialty']
+
   belongs_to :user
   has_many :expertises, dependent: :destroy
   has_many :skills

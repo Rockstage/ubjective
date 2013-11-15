@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131111165615) do
+ActiveRecord::Schema.define(:version => 20131115123640) do
 
   create_table "authentications", :force => true do |t|
     t.string   "user_id"
@@ -55,8 +55,11 @@ ActiveRecord::Schema.define(:version => 20131111165615) do
     t.text     "description"
     t.string   "location"
     t.string   "category"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.text     "vision"
+    t.string   "status"
+    t.boolean  "public",      :default => false
   end
 
   add_index "projects", ["user_id"], :name => "index_projects_on_user_id"

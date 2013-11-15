@@ -1,6 +1,13 @@
 /* Large desktop */
 @media (min-width: 1200px) {
 
+*:hover,
+*:focus {
+	-webkit-transition: 0.5s;
+	transition: 0.5s;
+}
+
+
 }
 
  

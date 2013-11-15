@@ -26,6 +26,8 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="divider-vertical"></li>
+              <li><%= link_to '<i class="icon-cog"></i> Projects'.html_safe, browse_projects_path %></li>
+              <li class="divider-vertical"></li>
               <% if user_signed_in? %>
                 <li><%= link_to '<i class="icon-check"></i> Tasks'.html_safe, tasks_path(current_user) %></li>
               <% else %>
@@ -34,6 +36,11 @@
               <li class="divider-vertical"></li>
               <li><%= link_to '<i class="icon-th-list"></i> Browse'.html_safe, browse_path %></li>
               <li class="divider-vertical"></li>
+                <% if user_signed_in? %>
+                  <li><%= link_to '<i class="icon-search"></i> Search'.html_safe, search_path %></li>
+                <% end %>
+              <li class="divider-vertical"></li>
+              
             </ul>
             <ul class="nav pull-right">
               <li class="divider-vertical"></li>
@@ -41,11 +48,11 @@
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i><%= current_user.profile_name %><b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <li class="nav-header">Hello!</li>
-                    <li><span class="text_in_dropdown"><strong>u</strong>bjective will help you <strong>organize</strong> and <strong>keep track</strong> of your personal goals. Additionally it can show you cool tasks others have shared with the world, which you may clone for yourself!</span></li>
+                    <li><%= link_to 'My Profile Page', profile_path(current_user) %></li>
+                    <li><%= link_to 'My Projects', projects_path(current_user) %></li>
                     <li class="divider"></li>
-                    <li class="nav-header">Profile options</li>
-                    <li><%= link_to '<i class="icon-user"></i> Edit Profile'.html_safe, edit_user_registration_path %></li>
+                    <li class="nav-header">Profile Info</li>
+                    <li><%= link_to '<i class="icon-user"></i> Edit Profile Info'.html_safe, edit_user_registration_path %></li>
                     <li><%= link_to '<i class="icon-globe"></i> Authentications'.html_safe, authentications_path %></li>
                     <li class="divider"></li>
                     <li class="nav-header">You can also check:</li>
@@ -81,7 +88,8 @@
 
       <hr />
       <footer>
-        <p>&copy; <strong>u</strong>bjective 2013</p>
+        <p>&copy; <strong>u</strong>bjective 2013 - <span class="gray">The website is currently under development and beta testing. For questions: ubjectiveteam@gmail.com</p>
+        <p class="gray text-center">Durring Develpment the website does not take responsibility for any of the content within it. If you do not feel comfortable sharing your projects or personal information, please reconsider using the website.</p>
       </footer>
 
     </div> <!-- /container -->
@@ -93,3 +101,4 @@
 
   </body>
 </html>
+

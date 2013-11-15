@@ -30,10 +30,41 @@ body {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-image: url("blueprint-texture-big.jpg");
+	background-image: url("graphy.png");
+	z-index: -1;
+}
+
+#blueprint-box {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-image: url("box-bg-final.png");
 	background-repeat: no-repeat;
 	background-size: cover;
 	z-index: -1;
+}
+
+h1 {
+	font-weight: 100;
+	font-size: 3em;
+}
+
+h2 {
+	font-weight: 200;
+}
+
+h3 {
+	font-weight: 400;
+}
+
+h4 {
+
+}
+
+h5 {
+
 }
 
 /*
@@ -139,7 +170,7 @@ li.dropdown {
 	padding: 10px 15px 10px;
 }
 
-
+/*
 .hero-unit {
 	background-image: url("tree.png");
 	background-repeat: no-repeat;
@@ -147,13 +178,17 @@ li.dropdown {
 	background-position: 50% 60%;
 	
 }
+*/
 
+.img-center img {
+	text-align: center;
+}
 
-
-*:hover,
-*:focus {
-	-webkit-transition: 0.5s;
-	transition: 0.5s;
+.box-background {
+	margin: 5px;
+	padding: 0 10px;
+	background-color: rgba(0,0,0,0.05);
+	border-radius: 5px;
 }
 
 .add_fields_button {
@@ -169,4 +204,22 @@ li.dropdown {
 	margin-left: 5%;
 }
 
+.gray {
+	color: gray;
+}
+
+.black {
+	color: black;
+}
+
+hr.colorful-border {
+	border: 1px solid #00eac1;
+}
+
+.colorful {
+	
+	color: #01d9c7;
+}
+
+/* color: #01d999; */
 

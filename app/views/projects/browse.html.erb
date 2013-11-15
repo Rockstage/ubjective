@@ -1,0 +1,8 @@
+<% @projects.each do |project| %>
+	
+	<h2><a href="<%= project_path(project) %>" class="black"><%= project.title %></a><% if project.vision %><small> - <%= project.vision %></small><% end %></h2>
+	<p><%= project.category %><% if project.status %><span class="gray"> - status: <%= project.status %></span><% end %></p>
+	<p class="lead"><%= project.mission %></p>
+	
+	<hr class="colorful-border" />
+<% end %>

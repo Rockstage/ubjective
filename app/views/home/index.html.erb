@@ -1,8 +1,12 @@
-      <div class="hero-unit">
-        <h1 style="font-weight: normal">Projects</h1>
-        <h3>Focused on making the world a better place.</h3>
+      <div id="blueprint-box">
+    </div>
+
+      <div class="hero-unit" style="background: none;">
+        <div class="pagination-centered"><%= image_tag("Projects.png") %></div>
+        <h3 class="text-center">Focused on making the world a better place.</h3>
+        <blockquote class="text-center">It's like StartUp Weekend, <strong>any day</strong> of the week. - V.U.Z.F.</blockquote>
         <% if user_signed_in? %>
-          <p><a href="<%= tasks_path(current_user) %>" class="btn btn-primary btn-large">Tasks, now! &raquo;</a></p>
+          <p class="text-center"><a href="<%= tasks_path(current_user) %>" class="btn btn-primary btn-large" style="margin: auto 0;">Tasks! &raquo;</a> <a href="<%= profile_path(current_user) %>" class="btn btn-info btn-large" style="margin: auto 0;">My Profile! &raquo;</a> <a href="#" class="btn btn-success btn-large" style="margin: auto 0;">Projects! <small>[soon]</small> &raquo;</a></p>
         <% else %>
           <p>
             <a href="<%= login_path %>" class="btn btn-success btn-large">Sign In &raquo;</a></p>
@@ -11,6 +15,26 @@
           
         <% end %>
       </div>
+
+      <div class="row">
+        <div class="span4 box-background">
+          <h2><i class="icon-ok"></i>Share your Vision<br /><small>Simple. Elegant. Intuitive.</small></h2>
+          <p>"It's like having a personal Task Management Assistant". It intuitively <strong>rearranges to your needs</strong>, it helps you focus on <strong>one task at a time</strong>, and shows you your <strong>real-time progress</strong>.</p>
+            <p><%= link_to "Register Now &raquo;".html_safe, new_user_registration_path, class: 'btn btn-success' %></p>
+        </div>
+        <div class="span4 box-background" id="Resources">
+          <h2><i class="icon-map-marker"></i>Assemble your Team<br /><small>Sharing tasks just got cooler!</small></h2>
+          <p>You can share your <strong>daily tasks</strong> or even <strong>lifetime goals</strong> with a simple click of a button and meet others who share your goals.</p>
+          <p><%= link_to "Browse Tasks &raquo;".html_safe, browse_path, class: 'btn' %></p>
+        </div>
+        <div class="span4 box-background" id="Intel">
+          <h2><i class="icon-globe"></i>Manage your Project<br /><small>No more unwanted spam!</small></h2>
+          <p>No notifications, no email alerts, no popovers, no countdown timers. Do <strong>what you want</strong> to do, <strong>when you want</strong> to do it, so you can <strong>do it right</strong>.</p>
+          <p><%= link_to "Log In &raquo;".html_safe, new_user_session_path, class: 'btn' %></p>
+        </div>
+      </div>
+
+<% if false %>
 
       <div class="row">
         <div class="span4">
@@ -29,7 +53,4 @@
           <p><%= link_to "Log In &raquo;".html_safe, new_user_session_path, class: 'btn' %></p>
         </div>
       </div>
-
-      <div id="blueprint">
-    </div>
-
+<% end %>

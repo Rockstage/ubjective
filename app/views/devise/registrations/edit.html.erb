@@ -1,4 +1,5 @@
 <h2>Edit My Profile</h2>
+<p class="lead gray">The more people know about you, the bigger chance you have to get invited to projects.</p>
 
 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, class: 'form-horizontal' }) do |f| %>
 
@@ -18,11 +19,11 @@
 
   <fieldset>
     <legend>Professional Info</legend>
-    <%= f.input :pro_goal, input_html: { rows: 2, class: 'input-xxlarge' }, label: 'Professional ubjective', placeholder: '(To use my expertiese on the International Space Station.)' %>
+    <%= f.input :pro_goal, input_html: { rows: 2, class: 'input-xxlarge' }, label: 'Professional ubjective', placeholder: '(My ubjective is to use my expertiese on the International Space Station.)' %>
   </fieldset>
 
   <fieldset>
-    <legend>Specialities > Expertise > Skills </legend>
+    <legend>Specialities > Expertise > Skills <small> - those skills help you get indexed in the search.</small></legend>
 
       <%= f.simple_fields_for :specialties do |builder| %>
         <%= render 'specialty_fields', f: builder %>
@@ -85,7 +86,6 @@
       <legend>Confirm Changes</legend>
       <%= f.input :current_password, hint: "We need your current password to confirm your changes", input_html: { class: 'input-xxlarge', autocomplete: 'off' } %>
     </fieldset>
-
 
   <div class="form-actions">
     <%= f.submit "Update", class: 'btn btn-primary' %>

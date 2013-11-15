@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   # add excepts [browse and public show]
   before_filter :find_user
   before_filter :find_project, only: [:edit, :update, :destroy]
-  # before_filter :ensure_proper_user
+  before_filter :ensure_proper_user, except: [:browse, :show]
   # GET /projects
   # GET /projects.json
   def index
@@ -14,6 +14,10 @@ class ProjectsController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @projects }
     end
+  end
+
+  def browse
+    @projects = Project.public.all(:order => 'updated_at DESC')
   end
 
   # GET /projects/1

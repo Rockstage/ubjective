@@ -1,0 +1,50 @@
+<%= form_tag specialties_path, class: "form-inline", method: :get do %>
+	<div class="input-group input-group-small row">
+		<div class="span11">
+			<%= text_field_tag :query, params[:query], class: "form-control", id: "specialty_search", autofocus: true, autocomplete: "off" %>
+		</div>
+		<div class="input-group-btn span1">
+			<%= submit_tag "Search", class: "btn btn-primary btn-large" %>
+			<% if params[:query].present? %>
+				<%= link_to "Clear", specialties_path, class: "btn btn-small" %>
+			<% end %>
+		</div>
+	</div>
+<% end %>
+
+<p class="lead"><i class="icon-chevron-up"></i> Find the specialists you are looking for based on their specialties, expertise, and skills!</p><hr />
+
+<% @specialties.each do |specialty| %>
+
+	<div class="media">
+		<a class="pull-left" href="#">
+			<i class="icon-plus-sign"></i>
+		</a>
+		<div class="media-body">
+			<h4 class="media-heading"><%= link_to specialty.user.profile_name, profile_path(specialty.user) %></h4>
+			<p class="lead"><%= specialty.specialty %><% if specialty.role %> - <small class="gray"><%= specialty.role %></small><% end %></p>
+			
+			<blockquote>
+				<% if specialty.expertises %>
+					<% specialty.expertises.each do |expertise| %>
+						<h5><%= expertise.expertise %></h5>
+						<% if expertise.skills %>
+							<% expertise.skills.each do |skill| %>
+								<p><%= skill.skill %> - <span class="badge badge-info"><%= skill.skill_lvl %> / 10</span></p>
+
+							<% end %>
+						<% end %>
+					<% end %>
+				<% end %>
+			</blockquote>
+		</div>
+			
+	
+			
+	</div>
+	<hr />
+<% end %>
+
+
+
+

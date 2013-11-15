@@ -1,0 +1,66 @@
+<% if @user == current_user %>
+<p><%= link_to "Add profile info", edit_user_registration_path %> to fill the page below and increase your chance of getting invited to projects</p>
+<% end %>
+<h3>About me:</h3>
+<h1>Hi, i'm <span class="colorful"><%= @user.full_name %></span> <small> - <%= @user.pro_goal %></small></h1>
+<h4>I am a <%= @user.gender %> <% if @user.birthday %>, born in <%= @user.birthday.year %><% end %>, living in <%= @user.location %></h4>
+<% if @user.user_languages %>
+<p>I am speaking:<br />
+	<% @user.user_languages.each do |language| %>
+		<%= language.language %> <small> - [<%= language.skill_level %>],</small><br />
+	<% end %>
+	<% if @user.contact %>
+	so feel free to contact me at: <%= @user.contact %>
+	<% end %>
+	</p>
+<% end %>
+
+<hr class="colorful-border" />
+
+<div class="row">
+	<div class="span6">
+	<h2>My specialties include:</h2>
+
+	<% @user.specialties.each do |specialty| %>
+
+		<div class="media">
+			<a class="pull-left" href="#">
+				<i class="icon-plus-sign"></i>
+			</a>
+			<div class="media-body">
+				
+				<p class="lead"><%= specialty.specialty %><% if specialty.role %> - <small class="gray"><%= specialty.role %></small><% end %></p>
+				
+				<blockquote>
+					<% if specialty.expertises %>
+						<% specialty.expertises.each do |expertise| %>
+							<h5><%= expertise.expertise %></h5>
+							<% if expertise.skills %>
+								<% expertise.skills.each do |skill| %>
+									<p><%= skill.skill %> - <span class="badge badge-info"><%= skill.skill_lvl %> / 10</span></p>
+
+								<% end %>
+							<% end %>
+						<% end %>
+					<% end %>
+				</blockquote>
+			</div>
+		</div>
+		<hr />
+	<% end %>
+	</div>
+
+	<div class="span6">
+	<h2>My Education:</h2>
+		<% @user.user_educations.each do |education| %>
+			<h4><%= education.institution %><span class="gray"> - <%= education.edu_level %></span></h4>
+			<p>Degree: <strong><%= education.edu_field %></strong></p>
+			<p>Graduation year: <strong><%= education.edu_date.year %></strong></p>
+			<br />
+		<% end %>
+	<hr />
+	</div>
+</div>
+
+
+

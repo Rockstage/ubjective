@@ -1,12 +1,13 @@
 <h1>My tasks and ubjectives</h1>
+<p><%= link_to "Add profile info", edit_user_registration_path %> so other people can invite you to their projects</p>
 <%= link_to 'New Task', new_task_path, class: 'btn btn-primary', :data => { :'intro' => 'Start by adding a Task', :'step' => '1' } %>
 <% if @user.tasks.exists? %>
   <% if @user.tasks[2] %>
   <% else %>
-  <a class="btn btn-success" href="javascript:void(0);" onclick="javascript:introJs().goToStep(2).start();" data-intro="Now other people can do the tasks you shared with the world. <hr /> Make a How-To guide, <hr />Share a challenge, <hr />Make a fun everyday task public, <hr />and enjoy what you do!" data-step="5">How it works</a>
+  <a class="btn btn-success" href="javascript:void(0);" onclick="javascript:introJs().goToStep(2).start();" data-intro="Now other people can do the tasks you shared with the world. <hr /> Make a How-To guide, <hr />Share a challenge, <hr />Make a fun everyday task public, <hr />and enjoy what you do!" data-step="5">How tasks work</a>
   <% end %>
 <% else %>
-    <a class="btn btn-success" href="javascript:void(0);" onclick="javascript:introJs().start();">How it works</a>
+    <a class="btn btn-success" href="javascript:void(0);" onclick="javascript:introJs().start();">How tasks work</a>
 <% end %>
 <hr />
 

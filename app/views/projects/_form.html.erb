@@ -5,6 +5,9 @@
     <%= f.input :title, placeholder: '(Pinguibulb)', input_html: { class: 'input-xxlarge' } %>
   </div>
   <div class="field">
+    <%= f.input :vision, placeholder: 'Your vision of how you see your project and the impact it will have on the world.', input_html: { rows: 2, class: 'input-xxlarge' } %>
+  </div>
+  <div class="field">
     <%= f.input :mission, placeholder: '(Saving penguins with solar lightblulbs)', input_html: { rows: 2, class: 'input-xxlarge'} %>
   </div>
   <div class="field">
@@ -15,6 +18,12 @@
   </div>
   <div class="field">
     <%= f.input :category, placeholder: '(Eco, Technology, Webdev)', input_html: { class: 'input-xxlarge' } %> 
+  </div>
+  <div class="field">
+    <%= f.input :status, collection: ["Vision", "Development", "Production", "Closed"] %>
+  </div>
+  <div class="field">
+    <%= f.input :public, label: 'Set to Public', hint: 'Your project will be visible to others besides you.' %>
   </div>
 
   <div class="form-actions">

@@ -6,16 +6,17 @@ class User < ActiveRecord::Base
   has_many :projects
   has_many :tasks
   has_many :objectives
-  has_many :user_languages
-  has_many :user_educations
+  has_many :user_languages, dependent: :destroy
+  has_many :user_educations, dependent: :destroy
   has_many :specialties, dependent: :destroy
-  has_many :expertises
-  has_many :skills
+  has_many :expertises # Specialties destroy expertise
+  has_many :skills #Expertise destroy skills
 
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
+  attr_accessor :current_password
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :profile_name, :role, :current_password,
                   :birthday, :gender, :location, :contact, :personal_goal, :pro_goal, :interests,
                   :user_languages_attributes, :user_educations_attributes,
@@ -36,7 +37,7 @@ class User < ActiveRecord::Base
               message: "Must be formatted correctly using: a-z, A-Z, 0-9, - and _ "
             }
 
-  validates :birthday, presence: true
+  # validates :birthday, presence: true
 
   # accepts_nested_attributes_for :model
   # also add to attr_accessible :model_attributes
@@ -44,7 +45,11 @@ class User < ActiveRecord::Base
   # Instead of having objectives through tasks, we would access objectives by tasks.objectives
 
   def full_name
-    first_name + " " + last_name
+    if first_name && last_name
+      first_name + " " + last_name
+      else
+      profile_name
+    end
   end
 
   def to_param
@@ -69,7 +74,6 @@ class User < ActiveRecord::Base
       super
     end
   end
-
 
 
   def facebook
